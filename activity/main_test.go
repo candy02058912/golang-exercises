@@ -8,26 +8,22 @@ import (
 
 type testCase struct {
 	name   string
-	input  []int
-	output []int
+	input  []float64
+	output float64
 }
 
-func TestBubbleSort(t *testing.T) {
+func TestDisplaceFn(t *testing.T) {
 	tcs := []testCase{
 		{
-			name:   "all positive integers",
-			input:  []int{9, 2, 5, 4, 3, 7, 6, 8, 1, 10},
-			output: []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-		},
-		{
-			name:   "with negative integer",
-			input:  []int{9, 2, 5, 4, -3, 7, 6, 8, 1, 10},
-			output: []int{-3, 1, 2, 4, 5, 6, 7, 8, 9, 10},
+			name:   "acceration 10, initialV 2, initialD 0, time 3",
+			input:  []float64{10, 2 , 0, 3},
+			output: 51,
 		},
 	}
 	for _, tc := range tcs {
 		t.Run(tc.name, func(t *testing.T) {
-			assert.Equal(t, tc.input, tc.input)
+      displaceFn := GenDisplaceFn(tc.input[0], tc.input[1], tc.input[2])
+			assert.Equal(t, displaceFn(tc.input[3]), tc.output)
 		})
 	}
 }
