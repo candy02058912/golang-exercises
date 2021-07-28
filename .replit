@@ -1,2 +1,2 @@
 language = "go"
-run = "gofmt -w animal/main.go && go run animal/main.go"
+run = "gofmt -w animal-interface/main.go && go run animal-interface/main.go"
