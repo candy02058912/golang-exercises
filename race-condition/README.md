@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-Go includes a [built-in data race dectector](https://golang.org/doc/articles/race_detector) that we can use, so we don't have to keep on retrying and take our chances:
+Go includes a [built-in data race dectector](https://golang.org/doc/articles/race_detector) that we can use:
 
 ```bash
 go run -race main.go
