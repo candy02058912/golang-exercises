@@ -1,2 +1,2 @@
 language = "go"
-run = "gofmt -w sort-array/main.go && go run sort-array/main.go"
+run = "gofmt -w dining-philosophers/main.go && go run dining-philosophers/main.go"
