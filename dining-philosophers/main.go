@@ -3,28 +3,32 @@ package main
 import (
 	"fmt"
 	"sync"
+	"time"
 )
 
 type ChopS struct{ sync.Mutex }
 
 type Philo struct {
-	ID              int
+	id              int
 	leftCS, rightCS *ChopS
 }
 
 var wg sync.WaitGroup
+
 // the host can allow 2 philosophers to eat at once
 var host = make(chan bool, 2)
 
 func (p Philo) eat() {
 	for i := 0; i < 3; i++ {
 		// ask host for permission to eat
-    // when host is full, this will block
+		// when host is full, this will block
 		host <- true
 		p.leftCS.Lock()
 		p.rightCS.Lock()
 
-		fmt.Printf("Philosopher %v is eating, currently there are %v philosopher(s) eating.\n", p.ID, len(host))
+		fmt.Printf("starting to eat %v\n", p.id)
+		time.Sleep(time.Millisecond)
+		fmt.Printf("finishing eating %v\n", p.id)
 
 		p.rightCS.Unlock()
 		p.leftCS.Unlock()
